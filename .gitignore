@@ -1,0 +1,29 @@
+# Ignore compiled files and build artifacts
+*.o
+*.out
+*.a
+*.so
+*.dSYM
+*.egg
+*.pyc
+*.pyo
+*.db
+
+# Ignore Docker-related files
+**/Dockerfile
+**/docker-compose.yml
+**/.docker
+**/.dockerignore
+
+# Ignore Python virtual environments
+.vscode/
+__pycache__/
+env/
+venv/
+
+# GitHub Actions workflow files
+.github/
+
+# Logs and temp files
+*.log
+*.tmp
