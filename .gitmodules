@@ -1,0 +1,3 @@
+[submodule "starlinked"]
+	path = starlinked
+	url = https://github.com/d-angelotorres/starlinked.git
