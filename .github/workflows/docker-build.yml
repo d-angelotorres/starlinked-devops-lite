@@ -1,0 +1,36 @@
+name: C++ Embedded Systems Simulator CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build Docker image
+        run: |
+          docker build -t starlinked-devops-lite .
+
+      - name: Run the container and capture the output
+        run: |
+          output=$(docker run --rm starlinked-devops-lite)
+          echo "$output"
+          if [[ "$output" == *"error"* ]]; then
+            echo "Error detected in output, failing the workflow."
+            exit 1
+          fi
+
+      - name: Complete CI pipeline
+        run: echo "C++ Embedded Systems Simulator ran successfully!"
